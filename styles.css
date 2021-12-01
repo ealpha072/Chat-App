@@ -1,0 +1,80 @@
+html,body{
+    height:100%;
+    background-color: rgb(216 207 207 / 25%);
+}
+
+img{
+    width: 50px;
+    height: 50px;
+    border-radius:50%;
+}
+#wrapper{
+    /*min-height:95vh;*/
+    border-radius:10px;
+    width: 450px;
+}
+
+div .form-row{
+    margin-bottom: 5px;
+}
+
+div .col-8, div .col-4{
+    margin-top: 10px;
+}
+
+div .user-details, div .image-name-active,  
+div .online-users a, div .online-users .content {
+    display:flex;
+    flex-direction: row;
+    justify-content:space-between;
+}
+
+div .user-details img{
+    width: 50px;
+    height: 50px;
+    border-radius:50%;
+}
+
+div .name-active, div .name-msg-active {
+    font-size:small;
+    margin-left:10px;
+}
+
+.online-users::-webkit-scrollbar{
+    width:0px;
+}
+
+.online-users a span{
+    font-weight:700;
+}
+
+div .online-users{
+    max-height:350px;
+    overflow-y:auto
+}
+
+div .online-users a {
+    text-decoration:none;
+    margin-bottom:10px;
+    border-bottom:1px solid #ecd3d3;
+}
+
+div.status-button{
+    font-size:10px;
+    color:#61b561;
+    padding-right:5px;
+}
+
+div .name-msg-active{
+    color:black;
+}
+
+.online-users a:last-child{
+    border:none;
+    margin-bottom:0px;
+}
+
+.statusbutton.offline{
+    color:gray;
+}
+
