@@ -16,35 +16,35 @@
                 <div class="form-row">
                     <div class="col">
                         <label for="">First Name</label>
-                        <input type="text" placeholder="Fist name" class="form-control form-control-sm" name="first-name" required>
+                        <input type="text" placeholder="Fist name" class="form-control form-control-sm shadow-none" name="first-name" required>
                     </div>   
                     <div class="col">
                         <label for="">Last Name</label>
-                        <input type="email" name="last-name" id="" placeholder="Last Name" class="form-control form-control-sm" required>
+                        <input type="email" name="last-name" id="" placeholder="Last Name" class="form-control form-control-sm shadow-none" required>
                     </div>             
                 </div>
                 <div class="form-row">
                     <label for="" class="col-12">Email</label>
                     <div class="col-12">
-                        <input type="email" name="email" id="" placeholder="Email" class="form-control form-control-sm" required>
+                        <input type="email" name="email" id="" placeholder="Email" class="form-control form-control-sm shadow-none" required>
                     </div>
                 </div>
                 <div class="form-row">
                     <label for="" class="col-12">Photo</label>
                     <div class="col-12">
-                        <input type="file" name="dp-photo" id="" placeholder="" class="form-control form-control-sm" required>
+                        <input type="file" name="dp-photo" id="" placeholder="" class="form-control form-control-sm shadow-none" required>
                     </div>
                 </div>
                 <div class="form-row">
                     <label for="" class="col-12">Password</label>
                     <div class="col-12">
-                        <input type="password" name="password-1" id="" placeholder="Password" class="form-control form-control-sm" required>
+                        <input type="password" name="password-1" id="" placeholder="Password" class="form-control form-control-sm shadow-none" required>
                     </div>
                 </div>
                 <div class="form-row">
                     <label for="" class="col-12">Confirm</label>
                     <div class="col-12">
-                        <input type="password" name="" id="password-2" placeholder="Confirm password" class="form-control form-control-sm" required>
+                        <input type="password" name="" id="password-2" placeholder="Confirm password" class="form-control form-control-sm shadow-none" required>
                     </div>
                 </div>
                 <div class="form-row">

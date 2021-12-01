@@ -16,13 +16,16 @@
                 <div class="form-row">
                     <label for="" class="col-12">Email</label>
                     <div class="col-12">
-                        <input type="email" name="email" id="" placeholder="Email Address" class="form-control form-control-sm">
+                        <input type="email" name="email" id="" placeholder="Email Address" class="form-control form-control-sm shadow-none">
                     </div>
                 </div>
                 <div class="form-row">
                     <label for="" class="col-12">Password</label>
-                    <div class="col-12">
-                        <input type="password" name="password-1" id="" placeholder="Password" class="form-control form-control-sm">
+                    <div class="col-12 input-group">
+                        <input type="password" name="password-1" id="" placeholder="Password" class="form-control form-control-sm shadow-none">
+                        <div class="input-group-append">
+                            <button class="btn shadow-none" type="button"><i class="fa fa-eye-slash"></i></button>
+                        </div>
                     </div>
                 </div>
                 <div class="form-row">
