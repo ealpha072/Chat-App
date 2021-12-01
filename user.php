@@ -10,13 +10,13 @@
                     <p>Active Now</p>
                 </div>
             </div>
-            <a href="">Logout</a>
+            <a href="" class="">Logout</a>
         </div>
         <div class="card-body">
             <div class="search-user">
                 <form action="" class="">
                     <div class="input-group">
-                        <input type="text" id="" class="form-control shadow-none" placeholder="Search online users..." name="search" required>
+                        <input type="text" id="" class="form-control form-control-sm shadow-none" placeholder="Search online users..." name="search" required>
                         <div class="input-group-append">
                             <button class="btn btn-dark shadow-none"><i class="fa fa-search"></i> </button>
                         </div>
@@ -57,7 +57,6 @@
                     </div>
                     <div class="fa fa-circle status-button"></div>
                 </a>
-
                 <a href="">
                     <div class="content">
                         <img src="images/user.png" alt="">
