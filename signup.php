@@ -12,27 +12,27 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="" action="">
+            <form action="#" method="">
                 <div class="form-row">
                     <div class="col">
                         <label for="">First Name</label>
-                        <input type="text" placeholder="Fist name" class="form-control form-control-sm shadow-none" name="first-name" required>
+                        <input type="text" placeholder="Fist name" class="form-control form-control-sm shadow-none" name="first-name" id="fname" required>
                     </div>   
                     <div class="col">
                         <label for="">Last Name</label>
-                        <input type="email" name="last-name" id="" placeholder="Last Name" class="form-control form-control-sm shadow-none" required>
+                        <input type="text" name="last-name" placeholder="Last Name" class="form-control form-control-sm shadow-none" id="lname" required>
                     </div>             
                 </div>
                 <div class="form-row">
                     <label for="" class="col-12">Email</label>
                     <div class="col-12">
-                        <input type="email" name="email" id="" placeholder="Email" class="form-control form-control-sm shadow-none" required>
+                        <input type="email" name="email" placeholder="Email" class="form-control form-control-sm shadow-none" id="email" required>
                     </div>
                 </div>
                 <div class="form-row">
                     <label for="" class="col-12">Photo</label>
                     <div class="col-12">
-                        <input type="file" name="dp-photo" id="" placeholder="" class="form-control form-control-sm shadow-none" required>
+                        <input type="file" name="dp-photo" placeholder="" class="form-control form-control-sm shadow-none" required>
                     </div>
                 </div>
                 <div class="form-row">
@@ -50,7 +50,8 @@
                         <p>Already signed up ? <a href="login.php">Log in</a></p>
                     </div>
                     <div class="col-4 submit">
-                        <button class="btn btn-dark btn-sm" name="signup" type="submit"><i class="fa fa-paper-plane mr-1"></i> Signup</button>
+                        <input type="submit" value="Sign up" class="btn btn-dark" id="submit-form">
+                        <!--<button class="btn btn-dark btn-sm" name="signup" type="submit" id="submit-form"><i class="fa fa-paper-plane mr-1"></i> Signup</button>-->
                     </div>                    
                 </div>
             </form>
@@ -61,4 +62,5 @@
 
 <?php require_once('footerscripts.php'); ?>
 <script src="javascript/togglepass.js"></script>
+<script src="javascript/signup.js"></script>
 <?php require_once('footer.php') ?>
