@@ -1,21 +1,24 @@
-const signupForm = $('form'), submitForm = $('form #submit-form');
-console.log(submitForm)
+const form = $('form')[0], submitFormbtn = $('#submit-form');
 
-signupForm.on('submit', e=>{
-    e.preventDefault();
-})
+$(function(){
 
-submitForm.on('click', () => {
-    let request = new XMLHttpRequest()
-    request.open("POST", 'javascript/response.php', true);
+    form.submit(e=>{
+        e.preventDefault()
+    })
 
-    request.onreadystatechange = ()=>{
-        if(request.readyState == 4 && request.status == 200){
-            
-            console.log(request.responseText)
+    submitFormbtn.click((e)=>{
+        e.preventDefault()
+        let request = new XMLHttpRequest;
+        request.open('POST', 'php/procesform.php', true);
+        
+        request.onreadystatechange = ()=>{
+            if(request.readyState == 4 && request.status == 200){
+                let data = request.response
+                console.log(data)
+            }
         }
-    }
 
-    request.send('name')
+        let formData = new FormData(form);
+        request.send(formData)
+    })
 })
-

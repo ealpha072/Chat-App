@@ -13,26 +13,27 @@
                 </button>
             </div>
             <form action="#" method="">
+                <input type="text" hidden name="register" value="register-user">
                 <div class="form-row">
                     <div class="col">
                         <label for="">First Name</label>
-                        <input type="text" placeholder="Fist name" class="form-control form-control-sm shadow-none" name="first-name" id="fname" required>
+                        <input type="text" placeholder="Fist name" class="form-control form-control-sm shadow-none" name="first-name" id="fname" required >
                     </div>   
                     <div class="col">
                         <label for="">Last Name</label>
-                        <input type="text" name="last-name" placeholder="Last Name" class="form-control form-control-sm shadow-none" id="lname" required>
+                        <input type="text" name="last-name" placeholder="Last Name" class="form-control form-control-sm shadow-none" id="lname" required >
                     </div>             
                 </div>
                 <div class="form-row">
                     <label for="" class="col-12">Email</label>
                     <div class="col-12">
-                        <input type="email" name="email" placeholder="Email" class="form-control form-control-sm shadow-none" id="email" required>
+                        <input type="email" name="email" placeholder="Email" class="form-control form-control-sm shadow-none" id="email" required >
                     </div>
                 </div>
                 <div class="form-row">
                     <label for="" class="col-12">Photo</label>
                     <div class="col-12">
-                        <input type="file" name="dp-photo" placeholder="" class="form-control form-control-sm shadow-none" required>
+                        <input type="file" name="dp-photo" placeholder="" class="form-control form-control-sm shadow-none">
                     </div>
                 </div>
                 <div class="form-row">
