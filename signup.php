@@ -37,16 +37,14 @@
                 </div>
                 <div class="form-row">
                     <label for="" class="col-12">Password</label>
-                    <div class="col-12">
-                        <input type="password" name="password-1" id="" placeholder="Password" class="form-control form-control-sm shadow-none" required>
+                    <div class="col-12 input-group">
+                        <input type="password" name="password-1" placeholder="Password" class="form-control form-control-sm shadow-none user-pass" id="user-pass-1">
+                        <div class="input-group-append">
+                            <button class="btn btn-dark shadow-none" type="button" id="show-hide-pass"><i class="fa fa-eye-slash"></i></button>
+                        </div>
                     </div>
                 </div>
-                <div class="form-row">
-                    <label for="" class="col-12">Confirm</label>
-                    <div class="col-12">
-                        <input type="password" name="" id="password-2" placeholder="Confirm password" class="form-control form-control-sm shadow-none" required>
-                    </div>
-                </div>
+                
                 <div class="form-row">
                     <div class="col-8 remember">
                         <p>Already signed up ? <a href="login.php">Log in</a></p>
@@ -61,4 +59,6 @@
     </div>
 </div>
 
+<?php require_once('footerscripts.php'); ?>
+<script src="javascript/togglepass.js"></script>
 <?php require_once('footer.php') ?>

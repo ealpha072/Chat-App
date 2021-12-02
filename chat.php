@@ -68,4 +68,6 @@
     </div>
 </div>
 
+<?php require_once('footerscripts.php'); ?>
+<script src=""></script>
 <?php require_once('footer.php') ?>

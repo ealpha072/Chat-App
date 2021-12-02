@@ -15,11 +15,10 @@
         <div class="card-body">
             <div class="search-user">
                 <form action="" class="">
-                    <div class="input-group">
+                    <div class="search-input">
+                        <span>Select user to start chatting</span>
                         <input type="text" id="" class="form-control form-control-sm shadow-none" placeholder="Search online users..." name="search" required>
-                        <div class="input-group-append">
-                            <button class="btn btn-dark shadow-none"><i class="fa fa-search"></i> </button>
-                        </div>
+                        <button class="btn shadow-none"><i class="fa fa-search"></i> </button>
                     </div>
                 </form>
             </div>
@@ -94,4 +93,6 @@
     </div>
 </div>
 
+<?php require_once('footerscripts.php'); ?>
+<script src="javascript/searchbar.js"></script>
 <?php require_once('footer.php') ?>
