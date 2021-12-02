@@ -16,28 +16,36 @@
            $this->conn = $db;
        }
 
+
        public function register()
        {
-           $sql1 = 'INSERT INTO '.$this->tablename. ' 
-                SET(firstname=:fname, 
+            $signupErrors = Array();
+
+            $sql1 = 'INSERT INTO '.$this->tablename. ' 
+                SET firstname=:fname, 
                     lastname=:lname, 
                     email=:email, 
                     photo=:photo, 
                     password=:password
-                )';
-            $sql2 = 'SELECT email FROM '.$this->tablename.' ';
+                ';
+            $sql2 = 'SELECT email FROM '.$this->tablename. ' WHERE email=:email';
 
             $stmt1 = $this->conn->conn->prepare($sql1);
-            $stmt2 = $this->conn->conn->prepare($sql2);
-            $stmt2->execute();
-
-            $results = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+            $stmt2  = $this->conn->conn->prepare($sql2);
 
             $this->firstname = htmlspecialchars(strip_tags($this->firstname));
             $this->lastname = htmlspecialchars(strip_tags($this->lastname));
-            $this->photo = $this->photo;
+            $this->photo =  htmlspecialchars($this->photo);
             $this->email = htmlspecialchars(strip_tags($this->email));
             $this->password = $this->password;
+
+            if( filter_var($this->email, FILTER_VALIDATE_EMAIL)){
+               //if valid email, check existing
+               $stmt2->bindParam(':email', $this->email);
+               $stmt2->execute();
+               $results = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+                
+            }
 
             //bind params;
             $stmt1->bindParam(':fname', $this->firstname);

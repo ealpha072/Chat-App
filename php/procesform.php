@@ -6,20 +6,30 @@
     $database->getConn();
 
     $access = new Access($database);
-    
-    $access->firstname = $_POST['first-name'];
-    $access->lastname = $_POST['last-name'];
-    $access->email = $_POST['email'];
-    $access->photo = $_FILES['dp-photo'];
-    $access->password = $_POST['password-1'];
+  
+    $fname = $_POST['first-name'];
+    $lname = $_POST['last-name'];
+    $email = $_POST['email'];
+    $photo = $_FILES['dp-photo']['name'];
+    $pass = $_POST['password-1'];
 
-    if( !empty($_POST['first-name']) && !empty($_POST['last-name']) && !empty($_POST['email']) 
-        && !empty($_FILES['dp-photo']) && !empty($_POST['password-1']) )
+    if( !empty($fname) && !empty($lname) && !empty($email) && !empty($photo) && !empty($pass) )
     {
-        
-    }else{
-        
-    }
+        $access->firstname = $fname;
+        $access->lastname = $lname;
+        $access->email = $email;
+        $access->photo = $photo;
+        $access->password = $pass;
 
+        
+        if( $access->register() ){
+            echo 'True';
+        }else{
+            echo $signupErrors;
+        }
+
+    }else{
+        echo 'Empty fields not allowed';
+    }
 
 ?>

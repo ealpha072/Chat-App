@@ -39,7 +39,7 @@
                 <div class="form-row">
                     <label for="" class="col-12">Password</label>
                     <div class="col-12 input-group">
-                        <input type="password" name="password-1" placeholder="Password" class="form-control form-control-sm shadow-none user-pass" id="user-pass-1">
+                        <input type="password" name="password-1" placeholder="Password" class="form-control form-control-sm shadow-none user-pass" id="user-pass-1" value="123">
                         <div class="input-group-append">
                             <button class="btn btn-dark shadow-none" type="button" id="show-hide-pass"><i class="fa fa-eye-slash"></i></button>
                         </div>
