@@ -21,8 +21,8 @@
         $access->photo = $photo;
         $access->password = $pass;
 
-        $access->register();
-        
+        print_r($access->register());
+
     }else{
         echo 'Empty fields not allowed';
     }

@@ -6,12 +6,7 @@
             <h5 class="card-title text-center">Signup</h5>
         </div>
         <div class="card-body">
-            <div class="alert alert-danger" role="alert">
-                Ooooh no that is unfortunate
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
+            <div class="alert alert-danger show" role="alert"></div>
             <form action="#" method="">
                 <input type="text" hidden name="register" value="register-user">
                 <div class="form-row">
@@ -33,13 +28,13 @@
                 <div class="form-row">
                     <label for="" class="col-12">Photo</label>
                     <div class="col-12">
-                        <input type="file" name="dp-photo" placeholder="" class="form-control form-control-sm shadow-none">
+                        <input type="file" name="dp-photo" placeholder="" class="form-control form-control-sm shadow-none" >
                     </div>
                 </div>
                 <div class="form-row">
                     <label for="" class="col-12">Password</label>
                     <div class="col-12 input-group">
-                        <input type="password" name="password-1" placeholder="Password" class="form-control form-control-sm shadow-none user-pass" id="user-pass-1" value="123">
+                        <input type="password" name="password-1" placeholder="Password" class="form-control form-control-sm shadow-none user-pass" id="user-pass-1" value="123" >
                         <div class="input-group-append">
                             <button class="btn btn-dark shadow-none" type="button" id="show-hide-pass"><i class="fa fa-eye-slash"></i></button>
                         </div>

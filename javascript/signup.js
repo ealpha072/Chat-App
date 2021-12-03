@@ -1,4 +1,5 @@
-const form = $('form')[0], submitFormbtn = $('#submit-form');
+const form = $('form')[0], submitFormbtn = $('#submit-form'), errorDiv = $('.alert-danger');
+
 
 $(function(){
 
@@ -14,7 +15,11 @@ $(function(){
         request.onreadystatechange = ()=>{
             if(request.readyState == 4 && request.status == 200){
                 let data = request.response
-                console.log(data)
+                if(data){
+                    console.log(data)
+                    errorDiv.toggleClass('show')
+                    errorDiv.html(`<h6>${data}</h6>`);
+                }
             }
         }
 

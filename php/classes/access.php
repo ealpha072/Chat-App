@@ -16,11 +16,14 @@
            $this->conn = $db;
        }
 
+       public function getSignupErrors(){
+           return $this->signupErrors;
+       }
 
        public function register()
        {
-            $signupErrors = Array();
 
+            $signupErrors = array();
             $sql1 = 'INSERT INTO '.$this->tablename. ' 
                 SET firstname=:fname, 
                     lastname=:lname, 
@@ -45,7 +48,7 @@
                $stmt2->execute();
                $results = $stmt2->fetchAll(PDO::FETCH_ASSOC);
                if(count($results) > 0){
-                    array_push($signupErrors, 'Email already exists');
+                    $signupErrors['emailExists'] = 'Email already exists';
                }
             }
 
@@ -61,8 +64,7 @@
                 $stmt1->execute();
                 return true;
             }else{
-                var_dump($signupErrors);
-                return false;
+                return "<script>console.log(".json_encode($signupErrors).");</script>";
             }
         
        }
