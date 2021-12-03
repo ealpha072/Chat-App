@@ -21,13 +21,8 @@
         $access->photo = $photo;
         $access->password = $pass;
 
+        $access->register();
         
-        if( $access->register() ){
-            echo 'True';
-        }else{
-            echo $signupErrors;
-        }
-
     }else{
         echo 'Empty fields not allowed';
     }

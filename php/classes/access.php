@@ -44,21 +44,27 @@
                $stmt2->bindParam(':email', $this->email);
                $stmt2->execute();
                $results = $stmt2->fetchAll(PDO::FETCH_ASSOC);
-                
+               if(count($results) > 0){
+                    array_push($signupErrors, 'Email already exists');
+               }
             }
+
 
             //bind params;
-            $stmt1->bindParam(':fname', $this->firstname);
-            $stmt1->bindParam(':lname', $this->lastname);
-            $stmt1->bindParam(':email', $this->email);
-            $stmt1->bindParam(':photo', $this->photo);
-            $stmt1->bindParam(':password', $this->password);
+            if(count($signupErrors) === 0){
+                $stmt1->bindParam(':fname', $this->firstname);
+                $stmt1->bindParam(':lname', $this->lastname);
+                $stmt1->bindParam(':email', $this->email);
+                $stmt1->bindParam(':photo', $this->photo);
+                $stmt1->bindParam(':password', $this->password);
 
-            if($stmt1->execute()){
+                $stmt1->execute();
                 return true;
             }else{
+                var_dump($signupErrors);
                 return false;
             }
+        
        }
    }
 
