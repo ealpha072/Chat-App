@@ -11,7 +11,7 @@
 
                 </ul>
             </div>
-            <form action="#" method="">
+            <form action="#" method="" enctype="multipart/form-data">
                 <div class="form-row">
                     <div class="col">
                         <label for="">First Name</label>

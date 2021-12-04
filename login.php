@@ -6,13 +6,11 @@
             <h5 class="card-title text-center">Login</h5>
         </div>
         <div class="card-body">
-            <div class="alert alert-danger" role="alert">
-                Ooooh no that is unfortunate
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+            <div class="alert alert-danger" role="alert" style="display: none;">
+                <ul></ul>
             </div>
-            <form action="" action="">
+
+            <form action="#" method="POST" id="form">
                 <div class="form-row">
                     <label for="" class="col-12">Email</label>
                     <div class="col-12">
@@ -33,7 +31,7 @@
                         <p>Not signed up? <a href="signup.php">Sign-up</a></p>
                     </div>
                     <div class="col-4 submit">
-                        <button class="btn btn-dark btn-sm" name="signup" type="submit"><i class="fa fa-paper-plane"></i> Login</button>
+                        <input type="submit" class="btn btn-dark btn-sm"  value="Login" id="submit-form">
                     </div>                    
                 </div>
             </form>
@@ -42,5 +40,6 @@
     </div>
 </div>
 <?php require_once('footerscripts.php'); ?>
-<script src="javascript/togglepass.js"></script>
+    <script src="javascript/togglepass.js"></script>
+    <script src="javascript/login.js"></script>
 <?php require_once('footer.php') ?>

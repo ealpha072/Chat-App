@@ -33,7 +33,6 @@ $(function(){
                 }
             }
         }
-
         let formData = new FormData(form);
         request.send(formData)
     })
