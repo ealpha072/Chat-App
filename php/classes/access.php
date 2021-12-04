@@ -126,4 +126,51 @@
        }
    }
 
+   class User {
+        public $unique_id;
+        public $firstname;
+        public $lastname;
+        public $photo;
+        public $tmpName;
+        public $email;
+        public $password;
+        public $status;
+        public $tablename = 'users';
+
+
+        private $conn;
+
+        public function __construct($db)
+        {
+            $this->conn = $db;
+        }
+
+        public function getAllusers(){
+            $sql = 'SELECT * FROM '.$this->tablename. ' ';
+            $stmt = $this->conn->conn->prepare($sql);
+            $stmt->execute();
+            return $stmt;
+        }
+
+        public function getUser(){
+            $sql = 'SELECT * FROM '.$this->tablename. ' WHERE unique_id=:id';
+
+            $stmt = $this->conn->conn->prepare($sql);
+
+            $this->unique_id = $this->unique_id;
+
+            $stmt->bindParam(':id', $this->unique_id);
+
+            $stmt->execute();
+            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $results;
+        }
+
+
+
+
+
+       
+   }
+
 ?>
