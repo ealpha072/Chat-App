@@ -14,6 +14,7 @@
     $lname = $_POST['last-name'];
     $email = $_POST['email'];
     $photo = $_FILES['dp-photo']['name'];
+    $tmp = $_FILES['dp-photo']['tmp_name'];
     $pass = $_POST['password-1'];
 
     if( !empty($fname) && !empty($lname) && !empty($email) && !empty($photo) && !empty($pass) )
@@ -22,6 +23,7 @@
         $access->lastname = $lname;
         $access->email = $email;
         $access->photo = $photo;
+        $access->tmpName = $tmp;
         $access->password = $pass;
 
         $grantAccess = $access->register();

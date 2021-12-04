@@ -4,6 +4,7 @@
        public $firstname;
        public $lastname;
        public $photo;
+       public $tmpName;
        public $email;
        public $password;
 
@@ -39,6 +40,7 @@
             $this->firstname = htmlspecialchars(strip_tags($this->firstname));
             $this->lastname = htmlspecialchars(strip_tags($this->lastname));
             $this->photo =  htmlspecialchars($this->photo);
+            $this->tmpName = htmlspecialchars($this->tmpName);
             $this->email = htmlspecialchars(strip_tags($this->email));
             $this->password = $this->password;
 
@@ -52,6 +54,19 @@
                }
             }
 
+            if(($this->photo)){
+                $allowedTypes = ['jpeg', 'jpg', 'png'];
+                $targetDir = '../images/';
+                $targetfile = $targetDir . basename($this->photo);
+                $extension = strtolower(pathinfo($targetfile, PATHINFO_EXTENSION));
+
+                if(!in_array($extension, $allowedTypes)){
+                    $signupErrors['imageError']  = 'Image type not allowed';
+                }else{
+                    //process image
+                    move_uploaded_file($this->tmpName, $targetfile);
+                }
+            }
             
 
 
