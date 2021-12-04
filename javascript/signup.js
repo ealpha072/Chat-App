@@ -15,9 +15,11 @@ $(function(){
         request.onreadystatechange = ()=>{
             if(request.readyState == 4 && request.status == 200){
                 let data = request.response
-                if(data){
+                if(data === 'Registered'){
+                    location = 'user.php';
+                }else{
                     console.log(data)
-                    errorDiv.toggleClass('show')
+                    errorDiv.css('display','block')
                     errorDiv.html(`<h6>${data}</h6>`);
                 }
             }

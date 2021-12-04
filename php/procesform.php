@@ -1,4 +1,7 @@
-<?php 
+<?php
+
+    use function PHPSTORM_META\type;
+
     include_once('classes/config.php');
     include_once('classes/access.php');
 
@@ -21,7 +24,14 @@
         $access->photo = $photo;
         $access->password = $pass;
 
-        print_r($access->register());
+        $grantAccess = $access->register();
+        if(!is_bool($grantAccess)){
+            foreach ($grantAccess as $error) {
+                echo $error;
+            }
+        }else{
+            echo 'Registered';
+        }
 
     }else{
         echo 'Empty fields not allowed';

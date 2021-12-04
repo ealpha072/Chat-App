@@ -52,6 +52,8 @@
                }
             }
 
+            
+
 
             //bind params;
             if(count($signupErrors) === 0){
@@ -64,7 +66,7 @@
                 $stmt1->execute();
                 return true;
             }else{
-                return "<script>console.log(".json_encode($signupErrors).");</script>";
+                return $signupErrors;
             }
         
        }

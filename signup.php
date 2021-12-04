@@ -6,7 +6,7 @@
             <h5 class="card-title text-center">Signup</h5>
         </div>
         <div class="card-body">
-            <div class="alert alert-danger show" role="alert"></div>
+            <div class="alert alert-danger" role="alert" style="display: none;"></div>
             <form action="#" method="">
                 <input type="text" hidden name="register" value="register-user">
                 <div class="form-row">
