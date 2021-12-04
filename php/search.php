@@ -8,15 +8,16 @@
     $database = new Database();
     $database->getConn();
 
-    $users = new User($database);
-    $data = $users->getAllusers();
-    $results = $data->fetchAll(PDO::FETCH_ASSOC);
+    $user = new User($database);
+    $value = htmlspecialchars($_POST['searchValue']);
+    
+    $results = $user->searchUser($value);
     $output = '';
-
-    if(count($results) === 1){
-        $output = 'No users found';
-    }elseif(count($results) > 1){
+    if(count($results) > 0){
         include('updatelist.php');
+    }else{
+        $output .= 'No user found';
     }
     echo $output;
+    
 ?>

@@ -166,6 +166,15 @@
             return $results;
         }
 
+        public function searchUser($searchValue){
+            $searchValue = "%$searchValue%";
+            $sql = 'SELECT * FROM '.$this->tablename. ' WHERE firstname LIKE :term OR lastname LIKE :term';
+            $stmt = $this->conn->conn->prepare($sql);
+            $stmt->bindParam(':term', $searchValue);
+            $stmt->execute();
+            $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $data;
+        }
 
 
 
