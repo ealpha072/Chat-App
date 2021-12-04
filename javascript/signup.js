@@ -1,4 +1,4 @@
-const form = $('form')[0], submitFormbtn = $('#submit-form'), errorDiv = $('.alert-danger');
+const form = $('form')[0], submitFormbtn = $('#submit-form'), errorDiv = $('.alert-danger'), errorList = $('.alert-danger ul');
 
 
 $(function(){
@@ -15,12 +15,21 @@ $(function(){
         request.onreadystatechange = ()=>{
             if(request.readyState == 4 && request.status == 200){
                 let data = request.response
+
                 if(data === 'Registered'){
-                    location = 'user.php';
-                }else{
-                    console.log(data)
+                    location.href = 'user.php';
+                }else if(data === 'Empty'){
                     errorDiv.css('display','block')
-                    errorDiv.html(`<h6>${data}</h6>`);
+                    errorList.html(`<li>All fields required</li>`)
+                }else{
+                    errorDiv.css('display','block')
+                    let array = new Array()
+                    array = data.split(',')
+                    array.pop()
+                    array.forEach(item=>{
+                       let list =  `<li>${item}</li>`
+                       errorList.append(list)
+                    })
                 }
             }
         }

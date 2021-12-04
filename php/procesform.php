@@ -29,14 +29,14 @@
         $grantAccess = $access->register();
         if(!is_bool($grantAccess)){
             foreach ($grantAccess as $error) {
-                echo $error;
+                echo $error. ',';
             }
         }else{
             echo 'Registered';
         }
 
     }else{
-        echo 'Empty fields not allowed';
+        echo 'Empty';
     }
 
 ?>
