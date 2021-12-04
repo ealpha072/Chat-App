@@ -1,4 +1,5 @@
-<?php 
+<?php
+
    class Access{
        public $id;
 
@@ -157,7 +158,7 @@
 
             $stmt = $this->conn->conn->prepare($sql);
 
-            $this->unique_id = $this->unique_id;
+            $this->unique_id = htmlspecialchars( $this->unique_id);
 
             $stmt->bindParam(':id', $this->unique_id);
 
@@ -182,4 +183,48 @@
        
    }
 
+   class Messages{
+       public $msg_id;
+       public $incoming_msg_id;
+       public $outgoing_msg_id;
+       public $msg;
+       public $tablename = 'messages';
+
+       private $conn;
+
+       public function __construct($db)
+       {
+           $this->conn  = $db;
+       }
+
+       public function insertMesage(){
+            $sql = 'INSERT INTO '.$this->tablename.' 
+                    SET
+                    incoming_msg_id=:incoming_id
+                    outgoing_msg_id=:outgoing_id
+                    msg=:msg
+            ';
+
+            $stmt = $this->conn->conn->prepare($sql);
+
+            $this->msg_id = $this->msg_id;
+            $this->incoming_msg_id = $this->incoming_msg_id;
+            $this->outgoing_msg_id = $this->outgoing_msg_id;
+            $this->msg = $this->msg;
+            
+            $stmt->bindParam(':incoming_id', $this->incoming_msg_id);
+            $stmt->bindParam(':outgoing_id', $this->outgoing_msg_id);
+            $stmt->bindParam(':msg', $this->msg);
+
+            if($stmt->execute()){
+                echo 'Message sent';
+            }else{
+                echo 'Message not sent';
+                echo $this->incoming_msg_id;
+                echo $this->msg;
+            }
+            
+       }
+
+   }
 ?>
