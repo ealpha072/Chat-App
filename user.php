@@ -52,21 +52,7 @@
                         </div>
                     </div>
                     <div class="fa fa-circle status-button"></div>
-                </a>
-
-                extras-->
-                
-                <!--<a href="">
-                    <div class="content">
-                        <img src="images/user.png" alt="">
-                        <div class="name-msg-active">
-                            <span>Alph Emm</span>
-                            <p>Default Message</p>
-                        </div>
-                    </div>
-                    <div class="fa fa-circle status-button"></div>
                 </a>-->
-                <!--end of extras-->
             </div>
         </div>
         
@@ -74,6 +60,5 @@
 </div>
 
 <?php require_once('footerscripts.php'); ?>
-<script src="javascript/searchbar.js"></script>
 <script src="javascript/users.js"></script>
 <?php require_once('footer.php') ?>
