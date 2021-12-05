@@ -23,5 +23,4 @@
     }else{
         echo 'No empty messages';
     }
-   
 ?>

@@ -1,4 +1,4 @@
-const form = $('form')[0], sendBtn = $('#send-message');
+const form = $('form')[0], sendBtn = $('#send-message'), msgField = $('#msg-field');
 
 
 sendBtn.click((e)=>{
@@ -9,9 +9,25 @@ sendBtn.click((e)=>{
     request.onreadystatechange = ()=>{
         if(request.readyState == 4 && request.status == 200){
             let data = request.response
+            msgField.val('')
             console.log(data)
         }
     }
-    let formData = new FormData(form);
+    let formData = new FormData(form)
     request.send(formData)
 })
+
+
+setInterval(()=>{
+    let request = new XMLHttpRequest;
+    request.open('POST', 'php/getchat.php', true);
+    
+    request.onreadystatechange = ()=>{
+        if(request.readyState == 4 && request.status == 200){
+            let data = request.response
+            console.log(data)     
+        }
+    }
+    let formData = new FormData(form) 
+    request.send(formData)
+}, 1000)

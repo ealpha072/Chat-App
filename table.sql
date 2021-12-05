@@ -14,3 +14,5 @@ CREATE TABLE `chat-app`.`messages` ( `msg_id` INT NOT NULL AUTO_INCREMENT ,
 `incoming_msg_id` INT(255) NOT NULL , 
 `outgoing_msg_id` INT(255) NOT NULL , 
 `msg` INT(255) NOT NULL , PRIMARY KEY (`msg_id`)) ENGINE = InnoDB;
+
+ALTER TABLE `messages` CHANGE `msg` `msg` VARCHAR(25500) NOT NULL;

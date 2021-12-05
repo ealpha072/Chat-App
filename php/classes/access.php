@@ -197,17 +197,12 @@
            $this->conn  = $db;
        }
 
-       public function insertMesage(){
-            $sql = 'INSERT INTO '.$this->tablename.' 
-                    SET
-                    incoming_msg_id=:incoming_id
-                    outgoing_msg_id=:outgoing_id
-                    msg=:msg
-            ';
+        public function insertMesage(){
+            $sql = 'INSERT INTO '.$this->tablename.' SET incoming_msg_id=:incoming_id, outgoing_msg_id=:outgoing_id, msg=:msg';
 
             $stmt = $this->conn->conn->prepare($sql);
+            
 
-            $this->msg_id = $this->msg_id;
             $this->incoming_msg_id = $this->incoming_msg_id;
             $this->outgoing_msg_id = $this->outgoing_msg_id;
             $this->msg = $this->msg;
@@ -219,12 +214,25 @@
             if($stmt->execute()){
                 echo 'Message sent';
             }else{
-                echo 'Message not sent';
-                echo $this->incoming_msg_id;
-                echo $this->msg;
+                echo 'Not sent';
             }
+        }
+
+        public function getMessage(){
+            $sql = 'SELECT * FROM '.$this->tablename. ' WHERE (incoming_msg_id=:incoming_id AND outgoing_msg_id=:outgoing_id) OR (incoming_msg_id=:outgoing_id AND outgoing_msg_id=:incoming_id)';
+
+            $stmt = $this->conn->conn->prepare($sql);
             
-       }
+            $this->incoming_msg_id = $this->incoming_msg_id;
+            $this->outgoing_msg_id = $this->outgoing_msg_id;
+            $this->msg = $this->msg;
+
+            $stmt->bindParam(':incoming_id', $this->incoming_msg_id);
+            $stmt->bindParam(':outgoing_id', $this->outgoing_msg_id);
+
+            $stmt->execute();
+            return $stmt;
+        }
 
    }
 ?>

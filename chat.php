@@ -74,11 +74,11 @@
         </div>
 
         <div class="typing-area">
-                <form action="" class="">
+                <form action="" class="" method="POST">
                     <div class="form-group">
                         <input type="text" name="outgoing_id" hidden value="<?php echo $_SESSION['unique_id']?>">
                         <input type="text" name="incoming_id" hidden value="<?php echo $details[0]['unique_id']; ?>">
-                        <input type="text" name="message" placeholder="Type message" class="form-control shadow-none">
+                        <input type="text" name="message" placeholder="Type message" class="form-control shadow-none" id="msg-field">
                         <button class="btn btn-dark btn-sm shadow-none" id="send-message"><i class="fa fa-paper-plane"></i> </button>
                     </div>
                 </form>
