@@ -1,10 +1,10 @@
 <?php
     include_once('php/classes/access.php');
 
-    if(session_destroy()){
-        echo 'Session destroyed';
-    }else{
-        echo 'Npt destrpyed';
+    if(!isset($_SESSION['unique_id'])){
+        header('location: login.php');
     }
 
+    session_destroy();
+    header('location:login.php');
 ?>

@@ -1,21 +1,13 @@
 <?php
    
     include_once('php/classes/access.php');
-    //include_once('php/classes/config.php');
     
     if(!isset($_SESSION['unique_id'])){
         header('location: login.php');
     }
-    
-    if(session_id() == '' || !isset($_SESSION) || session_status() === PHP_SESSION_NONE) {
-        // session isn't started
-        echo 'Session not started';
-    }else{
-        echo 'Session active';
-    }
 
     require_once('header.php');
-    echo $_SESSION['unique_id'];
+
     $db = new Database();
     $db->getConn();
 

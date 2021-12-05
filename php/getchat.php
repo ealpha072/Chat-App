@@ -34,6 +34,7 @@
             }else{ //user is a receiver, message is an incoming msg
                 $output .= '
                     <div class="chat incoming">
+                        <img src="images/'.$msg['photo'].'" alt="">
                         <div class="message">
                             <p>'.$msg['msg']. '</p>
                         </div>

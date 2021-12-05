@@ -220,7 +220,7 @@
             }
 
             public function getMessage(){
-                $sql = 'SELECT * FROM '.$this->tablename. ' WHERE (incoming_msg_id=:incoming_id AND outgoing_msg_id=:outgoing_id) OR (incoming_msg_id=:outgoing_id AND outgoing_msg_id=:incoming_id) ORDER BY msg_id DESC';
+                $sql = 'SELECT * FROM '.$this->tablename. ' LEFT JOIN users ON users.unique_id = messages.outgoing_msg_id WHERE (incoming_msg_id=:incoming_id AND outgoing_msg_id=:outgoing_id) OR (incoming_msg_id=:outgoing_id AND outgoing_msg_id=:incoming_id) ORDER BY msg_id';
 
                 $stmt = $this->conn->conn->prepare($sql);
                 
