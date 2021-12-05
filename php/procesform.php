@@ -1,8 +1,8 @@
 <?php
-
+   
     use function PHPSTORM_META\type;
-
-    include_once('classes/config.php');
+    
+    //include_once('classes/config.php');
     include_once('classes/access.php');
 
     $database = new Database();
@@ -32,6 +32,7 @@
                 echo $error. ',';
             }
         }else{
+            
             echo 'Registered';
         }
 

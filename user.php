@@ -1,13 +1,21 @@
 <?php
-    include_once('php/classes/config.php');
+   
+    include_once('php/classes/access.php');
+    //include_once('php/classes/config.php');
     
     if(!isset($_SESSION['unique_id'])){
         header('location: login.php');
     }
+    
+    if(session_id() == '' || !isset($_SESSION) || session_status() === PHP_SESSION_NONE) {
+        // session isn't started
+        echo 'Session not started';
+    }else{
+        echo 'Session active';
+    }
 
     require_once('header.php');
-    include_once('php/classes/access.php');
-
+    echo $_SESSION['unique_id'];
     $db = new Database();
     $db->getConn();
 
@@ -28,7 +36,7 @@
                     <p><?php echo $details[0]['status']; ?></p>
                 </div>
             </div>
-            <a href="" class="">Logout</a>
+            <a href="logout.php" class="">Logout</a>
         </div>
         <div class="card-body">
             <div class="search-user">
@@ -43,16 +51,7 @@
 
             <div class="online-users">
 
-                <!--<a href="">
-                    <div class="content">
-                        <img src="images/user.png" alt="">
-                        <div class="name-msg-active">
-                            <span>Alph Emm</span>
-                            <p>Default Message</p>
-                        </div>
-                    </div>
-                    <div class="fa fa-circle status-button"></div>
-                </a>-->
+                
             </div>
         </div>
         

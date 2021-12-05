@@ -1,5 +1,4 @@
-const form = $('form')[0], sendBtn = $('#send-message'), msgField = $('#msg-field');
-
+const form = $('form')[0], sendBtn = $('#send-message'), msgField = $('#msg-field'), chatArea=$('.chat-area');
 
 sendBtn.click((e)=>{
     e.preventDefault()
@@ -25,7 +24,8 @@ setInterval(()=>{
     request.onreadystatechange = ()=>{
         if(request.readyState == 4 && request.status == 200){
             let data = request.response
-            console.log(data)     
+            console.log(data)
+            chatArea.html(data)     
         }
     }
     let formData = new FormData(form) 

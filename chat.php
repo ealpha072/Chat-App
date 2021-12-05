@@ -1,12 +1,13 @@
 <?php 
-    include_once('php/classes/config.php');
+    include_once('php/classes/access.php');
+    //include_once('php/classes/config.php');
     
     if(!isset($_SESSION['unique_id'])){
         header('location: login.php');
     }
 
     require_once('header.php');
-    include_once('php/classes/access.php');
+    
 
     $db = new Database();
     $db->getConn();
@@ -33,44 +34,7 @@
         </div>
 
         <div class="card-body chat-area">
-            <div class="chat outgoing">
-                <div class="message">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam est accusamus quod, voluptatem, atque modi consequatur id perspiciatis veniam hic soluta? </p>
-                </div>
-            </div>
 
-            <div class="chat incoming">
-                <img src="images/user.png" alt="">
-                <div class="message">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, nihil molestiae repudiandae a inventore maxime, soluta reprehenderit optio </p>
-                </div>
-            </div>
-
-            <div class="chat outgoing">
-                <div class="message">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam est accusamus quod, voluptatem, atque modi consequatur id perspiciatis veniam hic soluta? </p>
-                </div>
-            </div>
-            
-            <div class="chat incoming">
-                <img src="images/user.png" alt="">
-                <div class="message">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, nihil molestiae repudiandae a inventore maxime, soluta reprehenderit optio </p>
-                </div>
-            </div>
-
-            <div class="chat incoming">
-                <img src="images/user.png" alt="">
-                <div class="message">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, nihil molestiae repudiandae a inventore maxime, soluta reprehenderit optio </p>
-                </div>
-            </div>
-
-            <div class="chat outgoing">
-                <div class="message">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam est accusamus quod, voluptatem, atque modi consequatur id perspiciatis veniam hic soluta? </p>
-                </div>
-            </div> 
         </div>
 
         <div class="typing-area">
