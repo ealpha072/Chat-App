@@ -234,6 +234,10 @@
                 return $stmt;
             }
 
+            public function getLastMessage(){
+                $sql = 'SELECT * FROM '.$this->tablename.' WHERE (incoming_msg_id=:incoming_id OR outgoing_msg_id=:outgoing_id) AND (incoming_msg_id=:outgoing_id AND outgoing_msg_id=:incoming_id) ORDER BY msg_id LIMIT 1';
+            }
+
     }
 
 ?>
