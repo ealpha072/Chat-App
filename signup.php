@@ -1,4 +1,5 @@
-<?php require_once('header.php'); ?>
+<?php 
+    require_once('header.php'); ?>
 
 <div class="container-fluid d-flex h-100 row align-items-center justify-content-center">
     <div class="card"  id="wrapper">

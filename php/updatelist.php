@@ -16,12 +16,14 @@
                 if($msg['outgoing_msg_id'] == $outgoing_id){
                     $you = 'You: ';
                 }else{
-                    $you = $you;
+                    $you = '';
                 }
+
             }
         }else{
             $showMsg = 'No message available';
         }
+
         ($user['status'] == 'Offline') ? $offline = 'Offline' : $offline = '';
 
         ($showMsg != 'No message available') ? $display = $you.$showMsg : $display = $showMsg;

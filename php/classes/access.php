@@ -173,6 +173,7 @@
             public function getAllusers($outgoing_id){
                 $sql = 'SELECT * FROM '.$this->tablename. ' WHERE NOT unique_id=:id';
                 $stmt = $this->conn->conn->prepare($sql);
+
                 $stmt->bindParam(':id', $outgoing_id);
 
                 $stmt->execute();
@@ -203,12 +204,7 @@
                 $stmt->execute();
                 $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 return $data;
-            }
-
-
-
-
-        
+            }   
     }
 
     class Messages{
