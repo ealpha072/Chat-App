@@ -108,7 +108,10 @@
         {
             $login_errors = [];
             $sql = 'SELECT * FROM '.$this->tablename. ' WHERE email=:email AND password=:pass LIMIT 0,1';
+            $setStatus = 'UPDATE '.$this->tablename. ' SET status="Active now" WHERE unique_id=:id';
+
             $stmt = $this->conn->conn->prepare($sql);
+            $stmt2 = $this->conn->conn->prepare($setStatus);
 
             $this->email = htmlspecialchars(strip_tags($this->email));
             $this->password = $this->password;
@@ -119,11 +122,31 @@
             $stmt->execute();
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
             if(count($results) === 1){
-                $_SESSION['unique_id'] = $results[0]['unique_id'];
-                return true;
+
+                $stmt2->bindParam(':id', $results[0]['unique_id']);
+                if($stmt2->execute()){
+                    $_SESSION['unique_id'] = $results[0]['unique_id'];
+                    return true;
+                }
             }else{
                     $login_errors['wrongcred'] = 'Wrong password or username';
                     return $login_errors;
+            }
+        }
+
+        public function logout(){
+            $sql = 'UPDATE '.$this->tablename.' SET status= "Offline" WHERE unique_id=:id';
+            $stmt = $this->conn->conn->prepare($sql);
+
+            $this->unique_id = htmlspecialchars($this->unique_id);
+
+            //$stmt->bindParam(':value', 'Offline');
+            $stmt->bindParam(':id', $this->unique_id);
+
+            if($stmt->execute()){
+                return true;
+            }else{
+                return false;
             }
         }
     }

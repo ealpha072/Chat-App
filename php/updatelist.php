@@ -22,11 +22,11 @@
         }else{
             $showMsg = 'No message available';
         }
-        if($showMsg != 'No message available'){
-            $display = $you.$showMsg;
-        }else{
-            $display = $showMsg;
-        }
+        ($user['status'] == 'Offline') ? $offline = 'Offline' : $offline = '';
+
+        ($showMsg != 'No message available') ? $display = $you.$showMsg : $display = $showMsg;
+        
+        
         # code...
         $output .= '
         <a href="chat.php?user_id='.$user['unique_id'].'">
@@ -37,7 +37,7 @@
                     <p>'.$display.'</p>
                 </div>
             </div>
-            <div class="fa fa-circle status-button"></div>
+            <div class="fa fa-circle status-button '.$offline.'"></div>
         </a>
         ';
     }

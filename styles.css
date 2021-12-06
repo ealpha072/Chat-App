@@ -115,11 +115,15 @@ div .online-users a {
     margin-bottom:10px;
     border-bottom:1px solid #ecd3d3;
 }
-
-div.status-button{
+/*user status*/
+div .status-button{
     font-size:10px;
     color:#61b561;
     padding-right:5px;
+}
+
+div .status-button.offline{
+    color: rgb(192, 189, 189);
 }
 
 div .name-msg-active{

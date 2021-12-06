@@ -28,7 +28,7 @@
                     <p><?php echo $details[0]['status']; ?></p>
                 </div>
             </div>
-            <a href="logout.php" class="">Logout</a>
+            <a href="logout.php?logout_id=<?php echo $details[0]['unique_id']; ?>" class="">Logout</a>
         </div>
         <div class="card-body">
             <div class="search-user">
