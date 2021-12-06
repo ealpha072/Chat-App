@@ -1,5 +1,6 @@
 <?php
     foreach ($results as $user) {
+        
         # code...
         $output .= '
         <a href="chat.php?user_id='.$user['unique_id'].'">
