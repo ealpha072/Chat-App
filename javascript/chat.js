@@ -10,10 +10,19 @@ sendBtn.click((e)=>{
             let data = request.response
             msgField.val('')
             console.log(data)
+            scrollBottom()
         }
     }
     let formData = new FormData(form)
     request.send(formData)
+})
+
+chatArea.mouseenter(()=>{
+    chatArea.addClass('active');
+})
+
+chatArea.mouseleave(()=>{
+    chatArea.removeClass('active');
 })
 
 
@@ -24,10 +33,17 @@ setInterval(()=>{
     request.onreadystatechange = ()=>{
         if(request.readyState == 4 && request.status == 200){
             let data = request.response
-            console.log(data)
-            chatArea.html(data)     
+            chatArea.html(data) 
+            if(!chatArea.hasClass('active')){
+                scrollBottom();
+            }
+            
         }
     }
     let formData = new FormData(form) 
     request.send(formData)
 }, 1000)
+
+function scrollBottom(){
+    chatArea.scrollTop(chatArea.prop('scrollHeight'))
+}
