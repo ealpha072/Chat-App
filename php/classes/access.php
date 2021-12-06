@@ -147,9 +147,11 @@
                 $this->conn = $db;
             }
 
-            public function getAllusers(){
-                $sql = 'SELECT * FROM '.$this->tablename. ' ';
+            public function getAllusers($outgoing_id){
+                $sql = 'SELECT * FROM '.$this->tablename. ' WHERE NOT unique_id=:id';
                 $stmt = $this->conn->conn->prepare($sql);
+                $stmt->bindParam(':id', $outgoing_id);
+
                 $stmt->execute();
                 return $stmt;
             }
@@ -168,11 +170,13 @@
                 return $results;
             }
 
-            public function searchUser($searchValue){
+            public function searchUser($searchValue, $id){
                 $searchValue = "%$searchValue%";
-                $sql = 'SELECT * FROM '.$this->tablename. ' WHERE firstname LIKE :term OR lastname LIKE :term';
+                $sql = 'SELECT * FROM '.$this->tablename. ' WHERE NOT unique_id=:id AND (firstname LIKE :term OR lastname LIKE :term)';
                 $stmt = $this->conn->conn->prepare($sql);
                 $stmt->bindParam(':term', $searchValue);
+                $stmt->bindParam(':id', $id);
+
                 $stmt->execute();
                 $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 return $data;
@@ -198,54 +202,57 @@
             $this->conn  = $db;
         }
 
-            public function insertMesage(){
-                $sql = 'INSERT INTO '.$this->tablename.' SET incoming_msg_id=:incoming_id, outgoing_msg_id=:outgoing_id, msg=:msg';
+        public function insertMesage()
+        {
+            $sql = 'INSERT INTO ' . $this->tablename . ' SET incoming_msg_id=:incoming_id, outgoing_msg_id=:outgoing_id, msg=:msg';
 
-                $stmt = $this->conn->conn->prepare($sql);
-                
+            $stmt = $this->conn->conn->prepare($sql);
 
-                $this->incoming_msg_id = $this->incoming_msg_id;
-                $this->outgoing_msg_id = $this->outgoing_msg_id;
-                $this->msg = $this->msg;
-                
-                $stmt->bindParam(':incoming_id', $this->incoming_msg_id);
-                $stmt->bindParam(':outgoing_id', $this->outgoing_msg_id);
-                $stmt->bindParam(':msg', $this->msg);
 
-                if($stmt->execute()){
-                    echo 'Message sent';
-                }else{
-                    echo 'Not sent';
-                }
+            $this->incoming_msg_id = $this->incoming_msg_id;
+            $this->outgoing_msg_id = $this->outgoing_msg_id;
+            $this->msg = $this->msg;
+
+            $stmt->bindParam(':incoming_id', $this->incoming_msg_id);
+            $stmt->bindParam(':outgoing_id', $this->outgoing_msg_id);
+            $stmt->bindParam(':msg', $this->msg);
+
+            if ($stmt->execute()) {
+                echo 'Message sent';
+            } else {
+                echo 'Not sent';
             }
+        }
 
-            public function getMessage(){
-                $sql = 'SELECT * FROM '.$this->tablename. ' LEFT JOIN users ON users.unique_id = messages.outgoing_msg_id WHERE (incoming_msg_id=:incoming_id AND outgoing_msg_id=:outgoing_id) OR (incoming_msg_id=:outgoing_id AND outgoing_msg_id=:incoming_id) ORDER BY msg_id';
+        public function getMessage()
+        {
+            $sql = 'SELECT * FROM ' . $this->tablename . ' LEFT JOIN users ON users.unique_id = messages.outgoing_msg_id WHERE (incoming_msg_id=:incoming_id AND outgoing_msg_id=:outgoing_id) OR (incoming_msg_id=:outgoing_id AND outgoing_msg_id=:incoming_id) ORDER BY msg_id';
 
-                $stmt = $this->conn->conn->prepare($sql);
-                
-                $this->incoming_msg_id = $this->incoming_msg_id;
-                $this->outgoing_msg_id = $this->outgoing_msg_id;
+            $stmt = $this->conn->conn->prepare($sql);
 
-                $stmt->bindParam(':incoming_id', $this->incoming_msg_id);
-                $stmt->bindParam(':outgoing_id', $this->outgoing_msg_id);
+            $this->incoming_msg_id = $this->incoming_msg_id;
+            $this->outgoing_msg_id = $this->outgoing_msg_id;
 
-                $stmt->execute();
-                return $stmt;
-            }
+            $stmt->bindParam(':incoming_id', $this->incoming_msg_id);
+            $stmt->bindParam(':outgoing_id', $this->outgoing_msg_id);
 
-            public function getLastMessage($id, $outgoing_id){
-                $sql = 'SELECT * FROM '.$this->tablename.' WHERE (incoming_msg_id=:unique_id OR outgoing_msg_id=:unique_id) AND (outgoing_msg_id=:outgoing_id OR outgoing_msg_id=:outgoing_id) ORDER BY msg_id DESC LIMIT 1';
+            $stmt->execute();
+            return $stmt;
+        }
 
-                $stmt = $this->conn->conn->prepare($sql);
-                
-                $stmt->bindParam(':unique_id', $id);
-                $stmt->bindParam(':outgoing_id', $outgoing_id);
+        public function getLastMessage($id, $outgoing_id)
+        {
+            $sql = 'SELECT * FROM ' . $this->tablename . ' WHERE (incoming_msg_id=:unique_id OR outgoing_msg_id=:unique_id) AND (incoming_msg_id=:outgoing_id OR outgoing_msg_id=:outgoing_id) ORDER BY msg_id DESC LIMIT 1';
 
-                $stmt->execute();
-                $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                return $results;
-            }
+            $stmt = $this->conn->conn->prepare($sql);
+
+            $stmt->bindParam(':unique_id', $id);
+            $stmt->bindParam(':outgoing_id', $outgoing_id);
+
+            $stmt->execute();
+            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $results;
+        }
 
     }
 
